@@ -27,10 +27,6 @@ The main goal of this project is to demonstrate end-to-end connectivity between 
 
 ---
 
-## 💡 Key Learnings
-- Building and consuming **OData services** from an **on-premise SAP system**.  
-- Managing connectivity between **SAP BTP** and **on-premise** using **SCC**.  
-- Applying **SAPUI5 MVC pattern** and best practices for real-world applications.  
+https://github.com/yousifheikal/FullStack-SAP-Project/issues/1#issue-3533450092
 
----
 
