@@ -1,0 +1,189 @@
+<mvc:View controllerName="employees.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <!-- Button use to Create new employee -->
+        <headerContent>
+            <Button icon="sap-icon://add" text="Add Employee" press=".onAddEmployee" type="Emphasized" />
+        </headerContent>
+
+        <!-- Filter Bar & Search Bar -->
+        <content >
+            <!-- Search Bar By Employee ID -->
+            <Panel headerText="Filteration Data" class="sapUiResponsiveMargin">
+                <SearchField
+                    id="searchId"
+                    width="300px"
+                    placeholder="Search Employees By ID..."
+                    search=".onSearch"
+                    liveChange=".onReadSingleRow"/>
+                    
+            </Panel>
+        </content>    
+
+        <content>
+        <!-- Display Employee Model and add some operation like ( Edit - ViewDetails - Delete )  -->
+        <Table id="employeeTable"
+               items="{/EMPLOYEESSet}"
+               growing="true"
+               growingScrollToLoad="true"
+               growingThreshold="10"
+               mode="MultiSelect"
+               itemPress=".onItemPress">
+
+                <!-- Header ToolBar -->
+            <headerToolbar>
+                <Toolbar>
+                    <!-- Header ICON -->
+                    <FlexBox
+                        id="f2"
+                        direction="Row"
+                        alignItems="Center"
+                        justifyContent="SpaceBetween"
+                        class="headerBar">
+                        <!-- Sort -->
+                        <HBox id="h1" alignItems="Center" class="sortButtons">
+
+                            <Button
+                                id="asc" 
+                                icon="sap-icon://sort-ascending" 
+                                press=".onSortAscending"
+                                tooltip="Sort Ascending" type="Ghost"/>
+                            <Button
+                                id="desc" 
+                                icon="sap-icon://sort-descending" 
+                                press=".onSortDescending"
+                                tooltip="Sort Descending" type="Ghost"/>
+
+                        <!-- Filter -->
+                            <Button 
+                                id="dialog"
+                                icon="sap-icon://filter" 
+                                press=".onOpenFilterDialog"
+                                tooltip="Open Filter" type="Ghost"/>
+
+                            <!-- Filter Dialog -->
+                            <Dialog
+                                id="filterDialog"
+                                title="Adapt Filters"
+                                class="sapUiContentPadding"
+                                draggable="true"
+                                resizable="true">
+
+                                <VBox class="sapUiSmallMargin" id="vb3">
+
+                                    <!-- ListBox -->
+                                    <FlexBox
+                                        direction="Row"
+                                        alignItems="Center"
+                                        justifyContent="SpaceBetween"
+                                        class="headerBar">
+                                        <Label text="Select Field:" id="l1"/>
+                                        
+                                        <Button icon="sap-icon://clear-filter" 
+                                            tooltip="Clear All Filters" 
+                                            press=".onClearFilters" />
+
+                                    </FlexBox>
+
+                                    <List id="fieldList" mode="SingleSelectMaster" includeItemInSelection="true">
+                                        <items>
+                                            <!-- <StandardListItem title="ID" id="did" /> -->
+                                            <StandardListItem title="EmployeeID" id="empId"/>
+                                            <StandardListItem title="Salary" id="salaryId"/>
+                                        </items>
+                                    </List>
+                    
+                                    <!-- Input with label before it -->
+                                    <HBox alignItems="Center" class="sapUiSmallMarginTop" id="hb1">
+                                        <Input id="filterInput2" width="200px" placeholder="Enter Value..."/>
+                                        <Input
+                                            id="operatorInput"
+                                            showValueHelp="true"
+                                            valueHelpRequest=".onValueHelpRequest"
+                                            width="300px"
+                                            placeholder="Select operator..." />
+                                    </HBox>
+
+                                </VBox>
+
+                                <beginButton>
+                                    <Button text="OK" press=".onConfirmFilter" id="ok"/>
+                                </beginButton>
+                                <endButton>
+                                    <Button text="Cancel" press=".onCancelDialog" id="cancel"/>
+                                </endButton>
+                            </Dialog>
+
+                            <!-- Clear Filters Icon -->
+                            <Button 
+                                id="clearAll"
+                                type="Ghost"
+                                icon="sap-icon://refresh" 
+                                press=".onRefresh"
+                                tooltip="Refresh Data"/>
+                        </HBox>
+
+                    </FlexBox>
+
+
+                            <!-- <Title text="Employees ({= ${/employees}.length })" level="H2"/> -->
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://excel-attachment" 
+                                    text="Export to Excel" 
+                                    press=".onExportExcel"
+                                    tooltip="Export to Excel" type="Success" />
+                            <Button icon="sap-icon://pdf-attachment" 
+                                    text="Export to PDF" 
+                                    press=".onExportPDF"
+                                    type= "Reject"
+                                    tooltip="Export to PDF" />
+                            <!-- <Button icon="sap-icon://refresh" 
+                                    press=".onRefresh"
+                                    tooltip="Refresh Data" /> -->
+                        </Toolbar>
+                </headerToolbar>
+        <!-- Intialize Columns -->
+             <columns>
+                <Column>
+                    <Text text="ID" id="Id"/>
+                </Column>
+                <Column>
+                    <Text text="Name" />   
+                </Column>
+                <Column>
+                    <Text text="Salary" />   
+                </Column>
+                <Column>
+                    <Text text="Postion"/>   
+                </Column>
+                <Column>
+                    <Text text="E-mail"/>   
+                </Column>
+                <Column>
+                    <Text text="Actions"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="colItem" type="Navigation" press=".onItemPress">
+                    <cells>
+                    <!-- Start to binding -->
+                       <Text text="{EmpId}"/>
+                       <Text text="{FullName}"/>
+                       <Text text="{Salary}"/>
+                       <Text text="{Positions}"/>
+                       <Link text="{Email}" href="mailto:{Email}" />
+                        
+                        <!-- Operations like edit - View Details - delete  -->
+                        <HBox id="HBox">
+                            <Button id="edit" icon="sap-icon://edit" press=".onEditEmployee" />
+                            <Button id="delete" icon="sap-icon://delete" type ="Reject" press=".onErrorMessageDialogPress" />
+                            <Button id="copy" icon="sap-icon://display" type="Neutral" press=".onItemPress" />
+                        </HBox>
+                    </cells> 
+                </ColumnListItem>
+            </items>   
+        </Table>
+      </content>    
+    </Page>
+</mvc:View>

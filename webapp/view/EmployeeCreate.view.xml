@@ -1,0 +1,178 @@
+<mvc:View controllerName="employees.controller.EmployeeCreate"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    core:require="{DateType: 'sap/ui/model/type/Date'}">
+    <Page id="createPage" title="{i18n>title2}" showNavButton="true" navButtonPress=".onNavBack">
+        
+        <!-- Header Actions -->
+        <headerContent>
+
+        </headerContent>
+        
+            <content >
+                <!-- Employee Creation Form -->
+                <Panel headerText="Create Employees" class="sapUiResponsiveMargin">
+                    <content>
+                        <form:SimpleForm 
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                labelSpanL="3" 
+                                labelSpanM="3" 
+                                emptySpanL="4" 
+                                emptySpanM="4"
+                                columnsL="1" 
+                                columnsM="1">
+                                    <form:content>
+                                <!-- First Name -->
+                                <Label text="First Name:" required="true" />
+                                <Input 
+                                    id="idFirstName"
+                                    value="{/FirstName}" 
+                                    placeholder="Enter first name"
+                                    valueState="{/FirstNameState}"
+                                    valueStateText="{/FirstNameStateText}"/>
+                                <!-- Last Name -->
+                                <Label text="Last Name:" required="true" />
+                                <Input 
+                                    id="idLastName"
+                                    value="{/LastName}" 
+                                    placeholder="Enter last name"
+                                    valueState="{/LastNameState}"
+                                    valueStateText="{/LastNameStateText}"/>
+                                <!-- Date of Birth  -->
+                                <Label text="Date of Birth:" />
+                                <DatePicker id="idDob"  
+                                        value="{/Dob}" 
+                                        valueState="{/DobState}" 
+                                        valueStateText="{/DobStateText}"
+                                        displayFormat="dd.MM.yyyy"
+                                        valueFormat="dd.MM.yyyy"  
+                                        change="onDateChange"
+                                        required="true"/>   
+                                <!-- Position -->
+                                <Label text="Position:" required="true" />
+                                <Input 
+                                    id="idPosition"
+                                    value="{/Positions}" 
+                                    placeholder="Enter Position"
+                                    valueState="{/PositionsState}"
+                                    valueStateText="{/PositionsStateText}"/>
+
+                                <!-- Date of Joining -->
+                                <Label text="Date of Joining:" required="true" />
+                                <DatePicker id="idJoinDate"  
+                                        value="{/JoinDate}" 
+                                        valueState="{/JoinDateState}" 
+                                        valueStateText="{/JoinDateStateText}"
+                                        displayFormat="dd.MM.yyyy"
+                                        valueFormat="dd.MM.yyyy"  
+                                        change="onDateChange"
+                                        required="true"/>             
+                                <!-- Marital Status -->
+                                <Label text="Marital Status:" required="true" />
+                                <Select 
+                                    id="idMaritalStatus"
+                                    selectedKey="{/MaritalStatus}"
+                                    valueState="{/MaritalStatusState}"
+                                    valueStateText="{/MaritalStatusStateText}"
+                                    change=".onInputChange">
+                                    <items>
+                                        <core:Item key="" text="Select MaritalStatus" />
+                                        <core:Item key="S" text="Single" />
+                                        <core:Item key="M" text="Married" />
+                                        <core:Item key="W" text="Widowed" />
+                                        <core:Item key="D" text="Divorced" />
+                                        <core:Item key="X" text="Separated" />
+                                        <core:Item key="R" text="Registered Partnership" />
+                                    </items>
+                                </Select>
+                                <!-- Gender -->
+                                <Label text="Gender:" required="true" />    
+                                <HBox class="sapUiTinyMarginTopBottom" alignItems="Center">
+                                    <RadioButtonGroup id="groupE" valueState="Information" columns="2">
+                                        <RadioButton text="Male" selected="true" />
+                                        <RadioButton text="Female" />
+                                    </RadioButtonGroup>
+                                </HBox>
+                            </form:content>
+                        </form:SimpleForm>
+                    </content>
+                </Panel>
+                
+            </content>
+
+            <!-- Optional Employee Data -->
+            <Panel expandable="true" headerText="Optional Employee Data" width="auto" class="sapUiResponsiveMargin">
+                <content>
+                    <form:SimpleForm 
+                            editable="true"
+                            layout="ResponsiveGridLayout"
+                            labelSpanL="3" 
+                            labelSpanM="3" 
+                            emptySpanL="4" 
+                            emptySpanM="4"
+                            columnsL="1" 
+                            columnsM="1">
+                        <form:content>
+                            <!-- Position -->
+                            <Label text="National ID or Resid:" required="false" />
+                            <Input 
+                                id="idNationalId"
+                                value="{/NationalId}" 
+                                placeholder="Enter National Id"
+                                valueState="{/NationalIdState}"
+                                valueStateText="{/NationalIdStateText}"/>
+                            <!-- Salary Amount Expected -->
+                            <Label text="Salary Amount Expected:" required="false" />
+                            <Input 
+                                id="idSalary"
+                                value="{/Salary}" 
+                                placeholder="Enter Salary"
+                                valueState="{/SalaryState}"
+                                valueStateText="{/SalaryStateText}"/>    
+                            
+                            <!-- Email -->
+                            <Label text="Email:" required="false" />
+                            <Input 
+                                id="idEmail"
+                                value="{/Email}" 
+                                placeholder="Enter Email"
+                                valueState="{/EmailState}"
+                                valueStateText="{/EmailStateText}" type="Email"/>  
+                            <!-- Phone -->
+                            <Label text="Phone:" required="false" />
+                            <Input 
+                                id="idPhone"
+                                value="{/Phone}" 
+                                placeholder="Enter Phone"
+                                valueState="{/PhoneState}"
+                                valueStateText="{/PhoneStateText}" type="Tel"/>
+                            <!-- Address  -->
+                            <Label text="Address" labelFor="commentArea" />
+                            <TextArea
+                                id="idAddress"
+                                value="{/Address}"
+                                valueState="{/AddressState}"
+                                valueStateText="{/AddressStateText}"
+                                placeholder="Enter your Address here..."
+                                rows="5"
+                                width="100%"
+                                growing="true"
+                                growingMaxLines="10"
+                            />    
+                        </form:content>
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+            <!-- Footer -->
+            <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button text="Save" press=".onSave" type="Emphasized" />
+                <Button text="Cancel" press=".onNavBack" type="Reject"/>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

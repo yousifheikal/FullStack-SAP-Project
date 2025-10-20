@@ -1,0 +1,157 @@
+<mvc:View controllerName="employees.controller.EmployeeEdit"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    core:require="{DateType: 'sap/ui/model/type/Date'}">
+  <Page id="updateEmployeePage" title="Update Employee Information" class="sapUiContentPadding" navButtonPress="onNavBack" showNavButton="true">
+
+    <content>
+        <!-- Basic Info -->
+        <Panel 
+            headerText="👤 Personal Information"
+            class="sapUiResponsiveMargin sapUiNoContentPadding"
+            backgroundDesign="Translucent">
+            <content>
+                <VBox class="sapUiMediumMargin">
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="3" 
+                        labelSpanM="4" 
+                        emptySpanL="2" 
+                        columnsL="2" 
+                        columnsM="1">
+
+                        <form:content>
+                            <Label text="First Name" required="true"/>
+                            <Input id="editFirstName" value="{empData>/FirstName}" placeholder="Enter first name"/>
+
+                            <Label text="Last Name" required="true"/>
+                            <Input id="editLastName" value="{empData>/LastName}" placeholder="Enter last name"/>
+
+                            <Label text="Date of Birth" required="true"/>
+                            <DatePicker id="editDob"
+                                value="{
+                                    path: 'empData>/Dob',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: { pattern: 'dd.MM.yyyy' }
+                                }"
+                                displayFormat="dd.MM.yyyy"
+                                valueFormat="dd.MM.yyyy"
+                                change="onDateChange"/>
+
+                            <Label text="Gender" required="true"/>
+                            <HBox>
+                                <RadioButtonGroup id="editGenderGroup" columns="2" selectedIndex="0">
+                                    <RadioButton text="Male"/>
+                                    <RadioButton text="Female"/>
+                                </RadioButtonGroup>
+                            </HBox>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </content>
+        </Panel>
+
+        <!-- Employment Info -->
+        <Panel 
+            headerText="💼 Employment Details"
+            class="sapUiResponsiveMargin sapUiNoContentPadding"
+            backgroundDesign="Translucent">
+            <content>
+                <VBox class="sapUiMediumMargin">
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="3" 
+                        labelSpanM="4" 
+                        emptySpanL="2" 
+                        columnsL="2" 
+                        columnsM="1">
+
+                        <form:content>
+                            <Label text="Position" required="true"/>
+                            <Input id="editPosition" value="{empData>/Positions}" placeholder="Enter position"/>
+
+                            <Label text="Date of Joining" required="true"/>
+                            <DatePicker id="editJoinDate"
+                                value="{
+                                    path: 'empData>/JoinDate',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: { pattern: 'dd.MM.yyyy' }
+                                }"
+                                displayFormat="dd.MM.yyyy"
+                                valueFormat="dd.MM.yyyy"
+                                change="onDateChange"/>
+
+                            <Label text="Marital Status" required="true"/>
+                            <Select id="editMaritalStatus" selectedKey="{empData>/MaritalStatus}">
+                                <core:Item key="" text="Select Marital Status"/>
+                                <core:Item key="S" text="Single"/>
+                                <core:Item key="M" text="Married"/>
+                                <core:Item key="D" text="Divorced"/>
+                                <core:Item key="W" text="Widowed"/>
+                                <core:Item key="X" text="Separated"/>
+                            </Select>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </content>
+        </Panel>
+
+        <!-- Optional Info -->
+        <Panel 
+            headerText="📄 Additional Information"
+            expandable="true"
+            expanded="false"
+            class="sapUiResponsiveMargin sapUiNoContentPadding"
+            backgroundDesign="Translucent">
+            <content>
+                <VBox class="sapUiMediumMargin">
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="3" 
+                        labelSpanM="4" 
+                        emptySpanL="2" 
+                        columnsL="2" 
+                        columnsM="1">
+
+                        <form:content>
+                            <Label text="National ID / Resid"/>
+                            <Input id="editNationalId" value="{empData>/NationalId}" placeholder="Enter national ID"/>
+
+                            <Label text="Salary Expectation"/>
+                            <Input id="editSalary" value="{empData>/Salary}" placeholder="Enter salary"/>
+
+                            <Label text="Email"/>
+                            <Input id="editEmail" value="{empData>/Email}" type="Email" placeholder="Enter email"/>
+
+                            <Label text="Phone"/>
+                            <Input id="editPhone" value="{empData>/Phone}" type="Tel" placeholder="Enter phone number"/>
+
+                            <Label text="Address"/>
+                            <TextArea id="editAddress"
+                                value="{empData>/Address}"
+                                rows="4"
+                                growing="true"
+                                placeholder="Enter full address"/>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </content>
+        </Panel>
+    </content>
+
+    <!-- Footer -->
+    <footer>
+        <Toolbar>
+            <ToolbarSpacer/>
+            <Button text="Update" press=".onSave" type="Emphasized" icon="sap-icon://save"/>
+            <Button text="Cancel" press=".onNavBack" type="Reject" icon="sap-icon://decline"/>
+        </Toolbar>
+    </footer>
+
+</Page>
+</mvc:View>

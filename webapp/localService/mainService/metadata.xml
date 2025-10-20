@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="Connected via Cloud Connector" xmlns:m="Connected via Cloud Connector" xmlns:sap="Connected via Cloud Connector">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZEMPLOYEE_CRUD_SRV" xml:lang="en" sap:schema-version="1" xmlns="Connected via Cloud Connector">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="Connected via Cloud Connector"/>
+            <EntityType Name="EMPLOYEES" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmpId"/>
+                </Key>
+                <Property Name="EmpId" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Employee ID (Primary Key)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label=" First Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Last Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FullName" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FULL NAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gender" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Gender (M/F)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dob" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date of Birth" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Positions" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Job Title/Position" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="JoinDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date of Joining" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salary" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Salary Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NationalId" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="National ID or Resident ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label=" Email Address" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Phone Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Address" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Home Address" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaritalStatus" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Marital Status (S/M/D/W)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Employment Status (A=Active, I=Inactive)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChangedOn" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Last Change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="Connected via Cloud Connector" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="EMPLOYEESSet" EntityType="ZEMPLOYEE_CRUD_SRV.EMPLOYEES" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="Connected via Cloud Connector" xmlns:atom="Connected via Cloud Connector"/>
+            <atom:link rel="latest-version" href="Connected via Cloud Connector" xmlns:atom="Connected via Cloud Connector"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

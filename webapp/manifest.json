@@ -1,0 +1,154 @@
+{
+  "_version": "1.37.0",
+  "sap.app": {
+    "id": "employees",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.7",
+      "toolsId": "#####################"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "Connected via Cloud Connector",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "Connected via Cloud Connector",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "models": {
+  "mainService": {
+    "dataSource": "############",
+    "settings": { "defaultBindingMode": "TwoWay" },
+    "preload": true
+  }
+},
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.96.6",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.ui.export": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "employees.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "employees.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "pattern": "create",
+          "name": "EmployeeCreate",
+          "target": "EmployeeCreate"
+        },
+        {
+          "pattern": "edit/{employeeId}",
+          "name": "EmployeeEdit",
+          "target": "EmployeeEdit"
+        },
+        {
+          "pattern": "details/{employeeId}",
+          "name": "EmployeeDetails",
+          "target": "EmployeeDetails"
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View1",
+          "viewName": "View1"
+        },
+          "EmployeeCreate": {
+          "viewName": "EmployeeCreate",
+          "viewId": "EmployeeCreate",
+          "viewLevel": 2
+        },
+          "EmployeeEdit": {
+          "viewName": "EmployeeEdit",
+          "viewId": "EmployeeEdit",
+          "viewLevel": 2
+        },
+          "EmployeeDetails": {
+          "viewName": "EmployeeDetails",
+          "viewId": "EmployeeDetails",
+          "viewLevel": 2
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "employees.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
