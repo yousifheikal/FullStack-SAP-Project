@@ -27,6 +27,7 @@ The main goal of this project is to demonstrate end-to-end connectivity between 
 
 ---
 
-https://github.com/yousifheikal/FullStack-SAP-Project/issues/1#issue-3533450092
+<img width="1917" height="872" alt="Image" src="https://github.com/user-attachments/assets/da50f994-f20f-485c-8f27-bd5ed50dcaff" />
+<img width="1918" height="870" alt="Image" src="https://github.com/user-attachments/assets/cea34255-a2d1-401b-ba9c-1a86d49987bf" />
 
 
